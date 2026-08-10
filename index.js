@@ -1,19 +1,39 @@
+/* =================================================================
+    Importando as dependências
+   =================================================================
+*/
+
 const express = require('express');
-const app = express();
-const port = 3000;
+
+
+//Importando as rotas
+const routes = require('./src/routes/web')
+
+/* =================================================================
+    Configurações do servidor
+   =================================================================
+*/
+const app = express(); //Ligando o Express
+const port = 3000; //Definindo a porta do servidor
 
 //Definindo o ejs como motor template padrão
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
-    res.render('pages/home')
-});
+//Definir a localização da pasta views
+app.set('views', './src/views')
 
-app.get('/books/new', (req, res) => {
-    res.render('pages/book_form')
-});
+/* =================================================================
+    Rotas
+   =================================================================
+*/
+//"Utilizando" as rotas do arquivo web.js
+app.use(routes)
 
+/* =================================================================
+    Escuta as requisições HTTP
+   =================================================================
+*/
 
 app.listen(port, () => {
-    console.log(`Example app listening on port:${port}`);
+    console.log(`Rodando em: http://localhost:${port}`);
 })
