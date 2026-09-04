@@ -22,6 +22,19 @@ function save(book) {
         tipo: "error", msg: "Erro: " + erro}
     })
 }//fim do salvar
+/**
+ * Retornam todos os livros cadastrados,
+ * ordenados pelo titulo em ordem crescente
+ * @returns  {Promise} Lista de livros ou objeto de erro
+ */
+function all(){
+    return db.select('*').from('books')
+    .orderBy('tiltle','ASC')
+    .then(books =>{ return books })
+    .catch(erro => {
+        return { type: "error", msg: "Erro: " + erro}
+    })
+} //fim do all
 
 //Exportando a função save 
-module.exports = { save }
+module.exports = { save, all }

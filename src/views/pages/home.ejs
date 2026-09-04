@@ -29,6 +29,11 @@
     <!--LIVROS CADASTRADOS-->
     <section class="container mt-3">
         <div class="row">
+
+        <!---->
+        <% avisos.forEach(book => { %>
+            <%- include('components/card_book') %>
+        <% }) %>       
             <!--Livro-->
             <div class="col-3">
                 <div class="card shadow-lg" style="width: 15rem;">

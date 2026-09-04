@@ -16,4 +16,12 @@ return res.send(msg)
 
 }
 
-module.exports = {store}
+async function index(req, res){
+    //Realizar a consulta no bando de dados
+       const books = await Book.all()
+
+    //Enviar os dados para tela
+    res.render('pages/home',{books})
+}
+
+module.exports = { store, index }
