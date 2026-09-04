@@ -3,6 +3,7 @@
 
 //Importa o módulo Router do express
 const router = require('express').Router();
+const BookController = require('../controllers/BookController')
 
 //Rotas
 //GET   /books             => Listar todos os livros
@@ -21,6 +22,7 @@ router.get('/books/new', (req, res) => {
     res.render('pages/book_form')
 });
 
+router.post('/books/new', BookController.store);
 
 //Exporta as rotas para outro arquivo
 module.exports = router;
